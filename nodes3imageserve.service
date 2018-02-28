@@ -1,0 +1,12 @@
+[Unit]
+Description=nodes3imageserve Service
+After=network.target
+
+[Service]
+User=ubuntu
+Type=simple
+ExecStart=~/imageserve/runNode.sh
+ExecStop=~/imageserve/nodeAppExit.sh
+Restart=on-abort
+
+[Install]

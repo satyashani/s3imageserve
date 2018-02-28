@@ -1,0 +1,10 @@
+{
+    "app" : {
+        "port" : 3001
+    },
+    "aws" : {
+        "bucket": "inputfilesforphantom",
+        "profile" : "default",
+        "source" : "output"
+    }
+}
