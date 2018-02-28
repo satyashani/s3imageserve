@@ -26,7 +26,7 @@ var getFile = function(url,callback){
 
 var app = express();
 app.get("*",function(req,res){
-    getFile(req.path,function(err,data){
+    getFile(req.path.replace(/^\//,''),function(err,data){
         if(!err && data && data.Body){  
             res.set({
                 'Content-Type': data.ContentType,
@@ -36,6 +36,7 @@ app.get("*",function(req,res){
             res.send(200,data.Body);
         }
         else{
+            console.error("image path",req.path,'not available',err.message);
             res.send(404,err.message);
         }
     });
