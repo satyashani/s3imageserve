@@ -27,7 +27,7 @@ var getFile = function(url,callback){
 var app = express();
 app.get("*",function(req,res){
     console.log("REQ:",req.path);
-    getFile(req.path.replace(/^\//,''),function(err,data){
+    getFile(config.aws.source+req.path,function(err,data){
         if(!err && data && data.Body){  
             res.set({
                 'Content-Type': data.ContentType,
