@@ -14,6 +14,7 @@ cd imageserve
 
 #Install dependencies
 sudo npm install
+sudo npm install forever -g
 #Copy service file
 sudo cp ./nodes3imageserve.service /etc/systemd/system/
 #Start service
