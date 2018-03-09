@@ -25,6 +25,7 @@ if [ -d "/etc/systemd/system/" ]; then
     sudo sed -i "s@ExecStop=~@ExecStop=$HOME@g" /etc/systemd/system/nodes3imageserve.service
     #Start service
     sudo systemctl restart nodes3imageserve.service
+    sudo  systemctl daemon-reload
 else
     sudo npm install forever -g
     forever app.js
