@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=ubuntu
 Type=simple
-ExecStart=~/imageserve/runNode.sh
-ExecStop=~/imageserve/nodeAppExit.sh
+ExecStart=~/imageserve/systemctl/runNode.sh
+ExecStop=~/imageserve/systemctl/nodeAppExit.sh
 Restart=on-abort
 
 [Install]

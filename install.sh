@@ -18,6 +18,7 @@ cd imageserve
 sudo npm install
 #Copy service file
 if [ -d "/etc/systemd/system/" ]; then
+    cd systemctl
     sudo cp ./nodes3imageserve.service /etc/systemd/system/
     #Start service
     sudo systemctl restart nodes3imageserve.service
