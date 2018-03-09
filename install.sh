@@ -20,6 +20,9 @@ sudo npm install
 if [ -d "/etc/systemd/system/" ]; then
     cd systemctl
     sudo cp ./nodes3imageserve.service /etc/systemd/system/
+    export HOME=~
+    sed -i.bak "s/ExecStart=~/ExecStart=$HOME/g" /etc/systemd/system/nodes3imageserve.service
+    sed -i.bak "s/ExecStop=~/ExecStop=$HOME/g" /etc/systemd/system/nodes3imageserve.service
     #Start service
     sudo systemctl restart nodes3imageserve.service
 else
