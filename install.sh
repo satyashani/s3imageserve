@@ -9,14 +9,20 @@ sudo apt-get install -y npm
 
 # Copy image server
 cd ~
-git clone git@github.com:satyashani/s3imageserve.git imageserve
+echo -n "Enter your bitbucket username : ";
+read BB;
+git clone https://$BB@bitbucket.org/satyashani/s3imageserve.git imageserve
 cd imageserve
 
 #Install dependencies
 sudo npm install
-sudo npm install forever -g
 #Copy service file
-sudo cp ./nodes3imageserve.service /etc/systemd/system/
-#Start service
-sudo systemctl restart nodes3imageserve.service
+if [ -d "/etc/systemd/system/" ]; then
+    sudo cp ./nodes3imageserve.service /etc/systemd/system/
+    #Start service
+    sudo systemctl restart nodes3imageserve.service
+else
+    sudo npm install forever -g
+    forever app.js
+fi
 
