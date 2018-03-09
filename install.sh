@@ -11,7 +11,7 @@ sudo apt-get install -y npm
 cd ~
 echo -n "Enter your bitbucket username : ";
 read BB;
-git clone https://$BB@bitbucket.org/satyashani/s3imageserve.git imageserve
+git clone https://github.com/satyashani/s3imageserve.git imageserve
 cd imageserve
 
 #Install dependencies
