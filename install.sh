@@ -19,9 +19,15 @@ sudo npm install
 #Copy service file
 if [ -d "/etc/systemd/system/" ]; then
     cd systemctl
+    sudo chmod +x runNode.sh
+    sudo chmod +x nodeAppExit.sh
     sudo cp ./nodes3imageserve.service /etc/systemd/system/
+    export HOME=~
+    sudo sed -i.bak "s@ExecStart=~@ExecStart=$HOME@g" /etc/systemd/system/nodes3imageserve.service
+    sudo sed -i.bak "s@ExecStop=~@ExecStop=$HOME@g" /etc/systemd/system/nodes3imageserve.service
     #Start service
-    sudo systemctl restart nodes3imageserve.service
+    sudo systemctl start nodes3imageserve.service
+    sudo systemctl daemon-reload
 else
     sudo npm install forever -g
     forever app.js
